@@ -1,0 +1,66 @@
+Configuration:
+  status: WARN
+  name: YAMLConfig
+  Appenders:
+    RollingFile:
+      - name: DefaultRollingFileAppender
+        fileName: logs/app.log
+        filePattern: 'logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz'
+        PatternLayout:
+          Pattern: >
+            %d [%t] [%p] %c | tenant:%X{tenantName} | uuid:%X{request_uuid} |
+
+            %replace{%replace{%replace{%replace{%replace{%replace{%replace{%m}{password=[^,]*}{password=******}}{wsPassword=[^,]*}{wsPassword=******}}{bindPass=[^,]*}{bindPass=******}}{unicodePwd=[^,]*}{unicodePwd=******}}{wsPwd=[^,]*}{wsPwd=******}}{generatedPassword=[^,]*}{generatedPassword=******}}{loginPassword=[^,]*}{loginPassword=******}%n
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          TimeBasedTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 20
+      - name: InternalRollingFileAppender
+        fileName: logs/Internal.log
+        filePattern: 'logs/$${date:yyyy-MM}/appInternal-%d{MM-dd-yyyy}-%i.log.gz'
+        PatternLayout:
+          Pattern: >
+            %d [%t] [%p] %c{1.} | tenant:%X{tenantName} | uuid:%X{request_uuid}
+            |
+
+            %replace{%replace{%replace{%replace{%replace{%replace{%replace{%m}{password=[^,]*}{password=******}}{wsPassword=[^,]*}{wsPassword=******}}{bindPass=[^,]*}{bindPass=******}}{unicodePwd=[^,]*}{unicodePwd=******}}{wsPwd=[^,]*}{wsPwd=******}}{generatedPassword=[^,]*}{generatedPassword=******}}{loginPassword=[^,]*}{loginPassword=******}%n
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          TimeBasedTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: 50 MB
+        DefaultRolloverStrategy:
+          max: 20
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: >
+          %d [%t] [%p] %c{1.} | tenant:%X{tenantName} | uuid:%X{request_uuid} |
+
+          %replace{%replace{%replace{%replace{%replace{%replace{%replace{%m}{password=[^,]*}{password=******}}{wsPassword=[^,]*}{wsPassword=******}}{bindPass=[^,]*}{bindPass=******}}{unicodePwd=[^,]*}{unicodePwd=******}}{wsPwd=[^,]*}{wsPwd=******}}{generatedPassword=[^,]*}{generatedPassword=******}}{loginPassword=[^,]*}{loginPassword=******}%n
+  Loggers:
+    Logger:
+      - name: '*'
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          - ref: InternalRollingFileAppender
+            level: DEBUG
+      - name: com.dev
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          - ref: DefaultRollingFileAppender
+            level: DEBUG
+    Root:
+      level: DEBUG
+      additivity: false
+      AppenderRef:
+        - ref: InternalRollingFileAppender
+          level: DEBUG
+        - ref: Console
+          level: INFO
