@@ -1,12 +1,6 @@
 spring: 
   application:
     name: BotHandler
-  datasource:
-    url:
-    username: 
-    password:
-    driver-class-name:
-  custom:
-  properties:
-    maxClientpool:10
-debug: true
+http:
+  client:
+    type: apache
