@@ -1,6 +1,10 @@
 spring: 
   application:
-    name: BotHandler
+    name: MicroLearnApplication
 http:
   client:
     type: apache
+message:
+  services: telegram
+  telegramToken: 7675262472:AAGfQA22WZwTnFGbjyEx96bTszNPQbvbr-U
+#  chatId: 

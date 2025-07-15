@@ -1,4 +1,4 @@
-package com.bthndlr.utility;
+package com.miclrn.utility;
 
 public abstract class StringUtil {
     public static boolean isEmpty(String str) {
