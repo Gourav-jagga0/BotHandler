@@ -18,7 +18,6 @@ public class MicroLearnApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ScheduleGetUpdates.init();
     }
 
 }

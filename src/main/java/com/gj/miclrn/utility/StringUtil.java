@@ -1,4 +1,4 @@
-package com.miclrn.utility;
+package com.gj.miclrn.utility;
 
 public abstract class StringUtil {
     public static boolean isEmpty(String str) {

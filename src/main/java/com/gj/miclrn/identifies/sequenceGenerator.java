@@ -1,4 +1,4 @@
-package com.miclrn.utility;
+package com.gj.miclrn.identifies;
 
 import java.net.NetworkInterface;
 import java.security.SecureRandom;

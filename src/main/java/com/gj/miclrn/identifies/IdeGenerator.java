@@ -1,4 +1,4 @@
-package com.miclrn.utility;
+package com.gj.miclrn.identifies;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

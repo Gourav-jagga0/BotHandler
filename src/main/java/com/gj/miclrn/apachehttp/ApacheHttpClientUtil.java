@@ -15,12 +15,13 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 
+import com.gj.miclrn.http.AbstractHttpServiceImpl;
 import com.gj.miclrn.http.HttpConstants;
 import com.gj.miclrn.http.HttpService;
-import com.miclrn.utility.StringUtil;
+import com.gj.miclrn.utility.StringUtil;
 
 @SuppressWarnings("unchecked")
-public class ApacheHttpClientUtil  implements HttpService {
+public class ApacheHttpClientUtil extends AbstractHttpServiceImpl implements HttpService {
 
     private final CloseableHttpClient defaultHttpClient;
 

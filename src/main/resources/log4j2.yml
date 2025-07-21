@@ -50,17 +50,17 @@ Configuration:
         AppenderRef:
           - ref: InternalRollingFileAppender
             level: DEBUG
-      - name: com.dev
+      - name: com.gj
         level: DEBUG
         additivity: false
         AppenderRef:
           - ref: DefaultRollingFileAppender
             level: DEBUG
     Root:
-      level: DEBUG
+      level: 
       additivity: false
       AppenderRef:
         - ref: InternalRollingFileAppender
           level: DEBUG
         - ref: Console
-          level: INFO
+          level: DEBUG

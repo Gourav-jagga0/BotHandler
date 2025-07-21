@@ -1,10 +1,57 @@
-spring: 
+spring:
   application:
     name: MicroLearnApplication
-http:
-  client:
-    type: apache
-message:
-  services: telegram
-  telegramToken: 7675262472:AAGfQA22WZwTnFGbjyEx96bTszNPQbvbr-U
-#  chatId: 
+  
+  profiles:
+    active: Notifications
+
+  datasource:
+    url: jdbc:h2:file:./data/testdb;AUTO_SERVER=TRUE;
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: always  # Creates Quartz tables
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: MicroLearnScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: false
+          threadPool:
+            threadCount: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.'H2Dialect'
+  flyway:
+      enabled: true
+      locations: classpath:db/migrations/dml/H2
+      baseline-on-migrate: true  # Important for existing databases
+      validate-on-migrate: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+  sql:
+    init:
+      mode: always  # Ensure DB initialization
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.quartz: INFO

@@ -1,22 +1,17 @@
-package com.gj.miclrn.messanger;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import com.gj.miclrn.messanger.telegram.TelegramMessanger;
-
-@Configuration
-public class MessageServiceConfig {
-
-	@Value("${message.services}")
-	private List<String> messageServices;
-
-	@Bean
-	public MessageService messageService() {
-		return new TelegramMessanger();
-	}
-
-}
+//package com.gj.miclrn.messanger;
+//
+//import java.util.Set;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//
+//@Configuration
+//public class MessageServiceConfig {
+//	
+//	@Autowired MessageServiceFactory msgFactory;
+//    @Bean
+//    Set<MessageService> messageService() {
+//		return msgFactory.createAllServices();
+//	}
+//}

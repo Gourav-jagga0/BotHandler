@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public interface HttpConstants {
 	String CONTENT_TYPE = "Content-Type";
+	String REQ_HEADERS = "REQ_HEADERS";
 	String HEADERS = "HEADERS";
 	String ENTITY = "ENTITY";
 
